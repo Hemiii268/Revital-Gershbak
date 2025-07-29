@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revital Gershbak - Freelance Video Editor</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8; /* Light background for a minimalist feel */
+            color: #333;
+            line-height: 1.6;
+        }
+        /* Custom styles for smooth scrolling if navigation were added */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Style for interactive elements like buttons */
+        .btn-primary {
+            background-color: #8b5cf6; /* A vibrant purple for the CTA */
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px; /* Fully rounded */
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary:hover {
+            background-color: #7c3aed; /* Darker purple on hover */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        .section-heading {
+            font-size: 2.5rem; /* Large heading for sections */
+            font-weight: 700;
+            color: #1a202c; /* Darker color for emphasis */
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .testimonial-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease-in-out;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        /* Styles for FAQ accordion */
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0; /* light gray border */
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: #4a5568;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 0.5rem;
+            color: #6b7280;
+        }
+        .faq-answer.open {
+            max-height: 150px; /* Adjust as needed based on content */
+            padding-bottom: 1rem;
+        }
+        .faq-question svg {
+            transition: transform 0.3s ease-out;
+        }
+        .faq-question.open svg {
+            transform: rotate(180deg);
+        }
+        /* Style for video embeds in the client spotlight */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 177.77%; /* 9:16 aspect ratio for shorts (9 / 16 * 100) */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-rose-100 to-rose-300 text-gray-800 py-20 md:py-32 overflow-hidden rounded-b-xl shadow-lg">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
+            <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 text-gray-800">
+                    Revital Gershbak
+                </h1>
+                <p class="text-xl md:text-2xl font-light mb-6 text-gray-700">
+                    Video Editor for Business People: Elevate Your Social Media Presence
+                </p>
+                <p class="text-lg md:text-xl mb-8 text-gray-600">
+                    Specializing in short-form video edits with effects and subtitles, I help businesses attract leads by bringing out their best hooks.
+                </p>
+                <a href="https://wa.me/972548943558" target="_blank" class="btn-primary inline-block">
+                    Send me a WhatsApp
+                </a>
+            </div>
+            <div class="md:w-1/2 flex justify-center md:justify-end fade-in">
+                <!-- Revital's image for the Hero section -->
+                <img src="https://i.imgur.com/Zz4Xuh0.jpeg" alt="Revital Gershbak" class="w-56 h-56 md:w-72 md:h-72 object-cover rounded-full shadow-2xl border-4 border-white transform hover:scale-105 transition-transform duration-300">
+            </div>
+        </div>
+    </section>
+
+    <!-- My Work / Portfolio Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading fade-in">See My Work</h2>
+            <p class="text-center text-lg max-w-3xl mx-auto mb-10 fade-in">
+                I specialize in transforming your content into engaging short-form videos for Instagram, TikTok, Facebook, and other social media platforms. My expertise lies in podcast video editing, where I pinpoint the most captivating hooks and interesting topics to convert viewers into leads.
+            </p>
+            <div class="relative w-full max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl aspect-video fade-in">
+                <!-- YouTube Video Embed -->
+                <!-- The 'autoplay=1&mute=1&loop=1&playlist=LEsvyMTpcwE' parameters ensure the video autoplays (muted) and loops. -->
+                <!-- 'controls=0&modestbranding=1&rel=0' remove controls, YouTube logo, and related videos for a cleaner look. -->
+                <iframe
+                    class="w-full h-full absolute top-0 left-0"
+                    src="https://www.youtube.com/embed/LEsvyMTpcwE?autoplay=1&mute=1&loop=1&playlist=LEsvyMTpcwE&controls=0&modestbranding=1&rel=0"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowfullscreen
+                    title="Revital Gershbak Portfolio Video"
+                ></iframe>
+            </div>
+            <p class="text-center text-md md:text-lg mt-8 max-w-3xl mx-auto fade-in">
+                This video showcases two types of edits:
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 mt-8">
+                <!-- Standard Edit Box -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-purple-100 md:w-1/2 fade-in">
+                    <h3 class="font-bold text-xl text-purple-700 mb-3 flex items-center justify-center">
+                        <span class="text-3xl mr-2">✨</span> Standard Edit
+                    </h3>
+                    <p class="text-gray-700 text-center">
+                        Includes precise cuts and professional subtitles to ensure your message is clear and concise. Perfect for foundational content.
+                    </p>
+                </div>
+                <!-- Premium Edit Box -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-purple-100 md:w-1/2 fade-in" style="transition-delay: 0.1s;">
+                    <h3 class="font-bold text-xl text-purple-700 mb-3 flex items-center justify-center">
+                        <span class="text-3xl mr-2">🌟</span> Premium Edit
+                    </h3>
+                    <p class="text-gray-700 text-center">
+                        Builds on the Standard Edit by adding dynamic effects, engaging animations, and creative transitions to make your videos truly pop and capture maximum attention.
+                    </p>
+                </div>
+            </div>
+            <p class="text-center text-md md:text-lg mt-8 max-w-3xl mx-auto fade-in">
+                I've had the privilege of working with many well-known industry professionals and various editing and podcast studios.
+            </p>
+        </div>
+    </section>
+
+    <!-- Client Spotlight Section -->
+    <section class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading fade-in">Client Spotlight</h2>
+            <p class="text-center text-lg max-w-3xl mx-auto mb-10 fade-in">
+                Here are some examples of short-form videos I've edited for my clients, showcasing how I bring their content to life.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Video 2 -->
+                <div class="video-container fade-in" style="transition-delay: 0.1s;">
+                    <iframe src="https://www.youtube.com/embed/-w-7eYhU7hY?controls=0&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <!-- Video 3 -->
+                <div class="video-container fade-in" style="transition-delay: 0.2s;">
+                    <iframe src="https://www.youtube.com/embed/aP7o9D3EWJo?controls=0&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <!-- Video 4 -->
+                <div class="video-container fade-in" style="transition-delay: 0.3s;">
+                    <iframe src="https://www.youtube.com/embed/qgUMoBsFkWw?controls=0&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <!-- Video 5 -->
+                <div class="video-container fade-in" style="transition-delay: 0.4s;">
+                    <iframe src="https://www.youtube.com/embed/dPc87Nh4dcE?controls=0&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <!-- Video 6 -->
+                <div class="video-container fade-in" style="transition-delay: 0.5s;">
+                    <iframe src="https://www.youtube.com/embed/W6ktwsLdF8o?controls=0&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <!-- New Video -->
+                <div class="video-container fade-in" style="transition-delay: 0.6s;">
+                    <iframe src="https://www.youtube.com/embed/cxQPiJTVG2Q?controls=0&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How I Work Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading fade-in">How I Work</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6 bg-white rounded-lg shadow-md fade-in">
+                    <div class="text-purple-600 text-5xl mb-4">💡</div>
+                    <h3 class="font-semibold text-xl mb-2">1. Consultation & Content Review</h3>
+                    <p class="text-gray-700">We discuss your goals, target audience, and review your raw footage to identify the best hooks and key messages.</p>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md fade-in" style="transition-delay: 0.1s;">
+                    <div class="text-purple-600 text-5xl mb-4">&#x2702;</div>
+                    <h3 class="font-semibold text-xl mb-2">2. Expert Editing</h3>
+                    <p class="text-gray-700">I craft your videos with precision, applying standard cuts, subtitles, and premium effects as per your chosen style.</p>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md fade-in" style="transition-delay: 0.2s;">
+                    <div class="text-purple-600 text-5xl mb-4">🚀</div>
+                    <h3 class="font-semibold text-xl mb-2">3. Feedback & Delivery</h3>
+                    <p class="text-gray-700">You review the draft, provide feedback, and I deliver the final, polished videos ready for your social media platforms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/3 flex justify-center fade-in">
+                <!-- Revital's image for the About Me section -->
+                <img src="https://i.imgur.com/8PHU5bg.jpeg" alt="Revital Gershbak" class="w-56 h-56 md:w-72 md:h-72 object-cover rounded-full shadow-lg border-4 border-white">
+            </div>
+            <div class="md:w-2/3 text-center md:text-left fade-in">
+                <h2 class="section-heading md:text-left">About Revital</h2>
+                <p class="text-lg md:text-xl leading-relaxed">
+                    I am a digital nomad with a passion for fitness and a strong desire to help others shine. My goal is to empower you to present your best self through beautiful, elegant videos that instantly capture the attention of potential leads. I have been doing video editing since 2023.
+                </p>
+                <p class="text-md mt-4 text-gray-600">
+                    I primarily use Adobe Premiere Pro to bring your video visions to life, ensuring high-quality and professional results.
+                </p>
+                <!-- Adobe Premiere Pro Logo -->
+                <div class="mt-4 flex justify-center md:justify-start">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Adobe_Premiere_Pro_CC_icon.svg/1024px-Adobe_Premiere_Pro_CC_icon.svg.png" alt="Adobe Premiere Pro Logo" class="w-16 h-16 object-contain shadow-md rounded-md">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Testimonials Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading fade-in">What My Clients Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial Card 1 -->
+                <div class="testimonial-card fade-in">
+                    <p class="text-gray-700 italic mb-4">"Revital's edits brought a new level of professionalism to our social media. Highly recommend!"</p>
+                    <p class="font-semibold text-purple-600">Gavriel Gerbi</p>
+                    <p class="text-sm text-gray-500">Zinuk meteori - business consulting</p>
+                </div>
+                <!-- Testimonial Card 2 -->
+                <div class="testimonial-card fade-in" style="transition-delay: 0.1s;">
+                    <p class="text-gray-700 italic mb-4">"Her ability to find the perfect hooks is unmatched. Our engagement has soared!"</p>
+                    <p class="font-semibold text-purple-600">Dafna Bazak</p>
+                    <p class="text-sm text-gray-500">numerology</p>
+                </div>
+                <!-- Testimonial Card 3 -->
+                <div class="testimonial-card fade-in" style="transition-delay: 0.2s;">
+                    <p class="text-gray-700 italic mb-4">"Working with Revital is a breeze. The quality and speed of her work are exceptional."</p>
+                    <p class="font-semibold text-purple-600">Riki Rozenberg</p>
+                    <p class="text-sm text-gray-500">salesflow CRM and automation</p>
+                </div>
+                <!-- Testimonial Card 4 -->
+                <div class="testimonial-card fade-in" style="transition-delay: 0.3s;">
+                    <p class="text-gray-700 italic mb-4">"She truly understands how to make content pop for social media. A game-changer for our podcasts."</p>
+                    <p class="font-semibold text-purple-600">Tomer Shtern</p>
+                    <p class="text-sm text-gray-500">we do podcasts</p>
+                </div>
+                <!-- Testimonial Card 5 -->
+                <div class="testimonial-card fade-in" style="transition-delay: 0.4s;">
+                    <p class="text-gray-700 italic mb-4">"Revital's video editing skills are top-notch. Our marketing efforts have seen a significant boost."</p>
+                    <p class="font-semibold text-purple-600">Ostnat Mastov</p>
+                    <p class="text-sm text-gray-500">mastov realestate</p>
+                </div>
+                <!-- Testimonial Card 6 -->
+                <div class="testimonial-card fade-in" style="transition-delay: 0.5s;">
+                    <p class="text-gray-700 italic mb-4">"Professional, creative, and delivers results. Revital is our go-to for video content."</p>
+                    <p class="font-semibold text-purple-600">Ruslan Shemer</p>
+                    <p class="text-sm text-gray-500">Mortgage advice</p>
+                </div>
+            </div>
+            <!-- Client Logos -->
+            <div class="mt-16 text-center fade-in">
+                <h3 class="font-semibold text-2xl text-gray-700 mb-6">Trusted by Industry Leaders</h3>
+                <div class="flex flex-wrap justify-center items-center gap-8">
+                    <img src="https://shemer-mortgage.co.il/wp-content/uploads/2024/03/%D7%9C%D7%95%D7%92%D7%95-%D7%9C%D7%9C%D7%90-%D7%A8%D7%A7%D7%A2-1-1.png" alt="Shemer Mortgage Logo" class="h-12 opacity-75 hover:opacity-100 transition-opacity duration-300 rounded-md">
+                    <img src="https://hedfinance.co.il/wp-content/uploads/2024/06/%D7%90%D7%A8%D7%99%D7%94-%D7%94%D7%93-%D7%A4%D7%99%D7%A0%D7%A0%D7%A1%D7%99%D7%9D.png" alt="Hed Finance Logo" class="h-12 opacity-75 hover:opacity-100 transition-opacity duration-300 rounded-md">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE-3E8daIW9pxp2Pgd8MTmTJqCzDw2kk-A-g&s" alt="Client Logo 7" class="h-12 opacity-75 hover:opacity-100 transition-opacity duration-300 rounded-md">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpni-ypFIiWlHAuqY1zDW_FuC1zR04EdYN0A&s" alt="Client Logo 9" class="h-12 opacity-75 hover:opacity-100 transition-opacity duration-300 rounded-md">
+                    <img src="https://www.meteoric.co.il/wp-content/uploads/2024/02/mainlogowhite-e1709464964641-1024x507.png" alt="Zinuk Meteori Logo" class="h-12 opacity-75 hover:opacity-100 transition-opacity duration-300 rounded-md">
+                    <img src="https://we-do.xyz/wp-content/uploads/2022/10/Artboard-1-copy-37.png" alt="We Do Podcasts Logo" class="h-12 opacity-75 hover:opacity-100 transition-opacity duration-300 rounded-md">
+                    <img src="https://mastov.co.il/wp-content/uploads/2024/03/inverted.png" alt="Mastov Real Estate Logo" class="h-12 opacity-75 hover:opacity-100 transition-opacity duration-300 rounded-md">
+                    <img src="https://dafnabazak.co.il/wp-content/uploads/2024/08/cropped-logo-dafna-300x241.webp" alt="Dafna Bazak Numerology Logo" class="h-12 opacity-75 hover:opacity-100 transition-opacity duration-300 rounded-md">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frequently Asked Questions Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading fade-in">Frequently Asked Questions</h2>
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What kind of videos do you specialize in?</span>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>I specialize in short-form video edits for business people, perfect for platforms like Instagram Reels, TikTok, and Facebook. My expertise includes podcast video editing, where I focus on finding the most engaging hooks and topics.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="faq-item fade-in" style="transition-delay: 0.1s;">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What's the difference between Standard and Premium edits?</span>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our **Standard Edit** focuses on precise cuts and professional subtitles for clear, concise messaging. The **Premium Edit** includes all Standard features plus dynamic effects, engaging animations, and creative transitions to make your videos truly stand out.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="faq-item fade-in" style="transition-delay: 0.2s;">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What do I need to provide to start?</span>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Typically, I'll need your raw video footage, any specific instructions or key messages you want to highlight, and your target platform(s). We'll discuss all details during our initial consultation.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="faq-item fade-in" style="transition-delay: 0.3s;">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How long does the editing process take?</span>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Turnaround time varies depending on the complexity of the project and your specific requirements. We'll establish a clear timeline during our initial discussion to ensure timely delivery.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-16 md:py-24 bg-gradient-to-br from-purple-600 to-purple-800 text-white text-center rounded-t-xl shadow-lg">
+        <div class="container mx-auto px-6 fade-in">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to Elevate Your Videos?</h2>
+            <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+                Let's create engaging short-form videos that capture attention and drive leads for your business.
+            </p>
+            <a href="https://wa.me/972548943558" target="_blank" class="btn-primary inline-block text-lg md:text-xl px-8 py-3">
+                Send me a WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-rose-100 to-rose-300 text-gray-800 text-center py-6">
+        <div class="container mx-auto px-6 flex flex-col sm:flex-row justify-between items-center">
+            <p class="mb-4 sm:mb-0">&copy; 2025 Revital Gershbak. All rights reserved.</p>
+            <div class="flex items-center space-x-4">
+                <!-- Instagram Logo (corrected SVG) -->
+                <a href="https://www.instagram.com/tali_arakelova/" target="_blank" class="text-gray-800 hover:text-purple-400 transition-colors duration-300">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M7.5 2.5h9a5 5 0 015 5v9a5 5 0 01-5 5h-9a5 5 0 01-5-5v-9a5 5 0 015-5zm0-2.5a7.5 7.5 0 00-7.5 7.5v9a7.5 7.5 0 007.5 7.5h9a7.5 7.5 0 007.5-7.5v-9a7.5 7.5 0 00-7.5-7.5h-9zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zm6.5-4a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"></path>
+                    </svg>
+                </a>
+                <!-- WhatsApp Logo (corrected SVG) -->
+                <a href="https://wa.me/972548943558" target="_blank" class="text-gray-800 hover:text-purple-400 transition-colors duration-300">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12.04 2C7.94 2 4.5 5.4 4.5 9.5c0 1.4.4 2.7.9 3.9l-1.5 5.5 5.6-1.4c1.1.6 2.4.9 3.6.9 4.1 0 7.5-3.4 7.5-7.5S16.14 2 12.04 2zm3.8 14.3c-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3l-1.1-1.4c-.2-.2-.5-.3-.8-.3-.3 0-.6.1-.8.3l-.3.3c-.5.5-1.1.8-1.8.8-.7 0-1.3-.3-1.8-.8-.5-.5-.8-1.1-.8-1.8 0-.7.3-1.3.8-1.8l.3-.3c.2-.2.4-.3.7-.3.3 0 .5.1.7.3l1.1 1.4c.2.2.5.3.8.3.3 0 .6-.1.8-.3l.3-.3c-.5-.5 1.1-.8 1.8-.8.7 0 1.3.3 1.8.8.5.5.8 1.1.8 1.8 0 .7-.3 1.3-.8 1.8z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Function to toggle FAQ answers
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('svg');
+
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                element.classList.remove('open');
+            } else {
+                // Close all other open FAQs
+                document.querySelectorAll('.faq-answer.open').forEach(openAnswer => {
+                    openAnswer.classList.remove('open');
+                    openAnswer.previousElementSibling.classList.remove('open');
+                });
+                answer.classList.add('open');
+                element.classList.add('open');
+            }
+        }
+
+        // Intersection Observer for fade-in animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const faders = document.querySelectorAll('.fade-in');
+
+            const appearOptions = {
+                threshold: 0.1, // Trigger when 10% of the element is visible
+                rootMargin: "0px 0px -50px 0px" // Shrink the viewport bottom by 50px
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('appear');
+                        appearOnScroll.unobserve(entry.target); // Stop observing once it has appeared
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>
